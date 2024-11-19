@@ -1,5 +1,6 @@
 package uz.pdp.myappfigma.configuration;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -15,18 +16,19 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
+
 public class OpenApiConfiguration {
     @Bean
     public OpenAPI springOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("PDP Online Java(SpringDOC)")
+                        .title("G42 Project Online Shop(SpringDOC)")
                         .description("This Document Designed For Teaching SpringDOC Project")
                         .version("10")
                         .contact(new Contact()
-                                .name("Elmurodov Javohir")
+                                .name("G42_Group")
                                 .email("john.lgd65@gmail.com")
-                                .url("https://github.com/jlkesh"))
+                                .url("https://github.com/JavaDevMystic"))
                         .license(new License()
                                 .name("Apache 2.0")
                                 .url("http://springdoc.org"))

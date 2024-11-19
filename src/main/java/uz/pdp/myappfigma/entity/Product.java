@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product extends Auditable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,21 +29,16 @@ public class Product {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private Double price;
 
     private Integer discount;
 
+    @Column(nullable = false)
     private Long categoryId;
 
-    private Long brandId;
+    @Column(nullable = false)
+    private Integer count;
 
-    private Long createdBy;
 
-    @CurrentTimestamp(event = EventType.INSERT, source = SourceType.VM)
-    private LocalDateTime createdAt;
-
-    @CurrentTimestamp(event = EventType.UPDATE, source = SourceType.VM)
-    private LocalDateTime updatedAt;
-
-    private Long updatedBy;
 }
