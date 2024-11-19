@@ -22,7 +22,7 @@ import uz.pdp.myappfigma.enums.AuthRole;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "auth_users")
-public class AuthUser extends Auditable{
+public class AuthUser extends AuthUserAuditable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

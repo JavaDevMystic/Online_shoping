@@ -24,7 +24,7 @@ public class UserSession {
         throw new BadCredentialsException("unauthorized");
     }
 
-    public Long requireUserId() {
+    public Long getId() {
         return requireUserData().id();
     }
 

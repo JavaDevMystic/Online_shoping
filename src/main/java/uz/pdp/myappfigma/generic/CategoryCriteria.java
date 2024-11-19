@@ -1,17 +1,16 @@
-package uz.pdp.myappfigma.dto.product;
+package uz.pdp.myappfigma.generic;
 
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Sort;
-import uz.pdp.myappfigma.generic.GenericCriteria;
 
 
 @Getter
 @Setter
 @ParameterObject
-public class ProductCriteria extends GenericCriteria {
+public class CategoryCriteria extends GenericCriteria {
 
     private Long priceFrom;
     private Long priceTo;

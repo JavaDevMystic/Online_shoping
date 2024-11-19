@@ -7,20 +7,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CurrentTimestamp;
-import org.hibernate.annotations.SourceType;
-import org.hibernate.generator.EventType;
-
-import java.time.LocalDateTime;
 
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "products")
-public class Product extends Auditable{
+@Table(name = "brands")
+public class Brand extends Auditable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,12 +27,4 @@ public class Product extends Auditable{
 
     @Column(nullable = false)
     private String name;
-
-    private Double price;
-
-    private Integer discount;
-
-    private Long categoryId;
-
-
 }

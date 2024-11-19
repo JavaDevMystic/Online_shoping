@@ -11,11 +11,5 @@ import java.time.LocalDateTime;
 public class ProductDto implements Serializable {
     String name;
     Double price;
-    Integer discount;
-    Long categoryId;
-    Long brandId;
-    Long createdBy;
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
-    Long updatedBy;
+
 }
