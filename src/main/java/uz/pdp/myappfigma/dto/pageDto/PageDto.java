@@ -1,4 +1,4 @@
-package uz.pdp.myappfigma.generic;
+package uz.pdp.myappfigma.dto.pageDto;
 
 
 import jakarta.validation.constraints.NotNull;
