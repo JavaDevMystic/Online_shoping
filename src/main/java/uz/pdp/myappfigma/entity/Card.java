@@ -1,39 +1,36 @@
 package uz.pdp.myappfigma.entity;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CurrentTimestamp;
-import org.hibernate.annotations.SourceType;
-import org.hibernate.generator.EventType;
-
-import java.time.LocalDateTime;
-
+import uz.pdp.myappfigma.enums.CardName;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "products")
-public class Product extends Auditable{
+@Table(name = "cards")
+public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private CardName cardName;
 
-    private Double price;
+    @Column(nullable = false)
+    private String cardNumber;
 
-    private Integer discount;
-
-    private Long categoryId;
-
-
+    @Column(nullable = false)
+    private String validNumber;
+    private Long balance;
 }

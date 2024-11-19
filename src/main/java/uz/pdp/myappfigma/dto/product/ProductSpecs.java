@@ -4,8 +4,8 @@ package uz.pdp.myappfigma.dto.product;
 import org.springframework.data.jpa.domain.Specification;
 import uz.pdp.myappfigma.entity.Product;
 import uz.pdp.myappfigma.entity.Product_;
+import uz.pdp.myappfigma.generic.ProductCriteria;
 import uz.pdp.myappfigma.utils.QueryUtil;
-
 
 public final class ProductSpecs {
 
