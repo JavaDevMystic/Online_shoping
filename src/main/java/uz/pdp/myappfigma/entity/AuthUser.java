@@ -44,7 +44,7 @@ public class AuthUser extends Auditable{
     private String lastName;
 
     @Enumerated(value = EnumType.STRING)
-    private AuthRole role=AuthRole.USER;
+    private AuthRole role=AuthRole.ADMIN;
 
     @Column(nullable = false)
     private Boolean isActive;

@@ -9,10 +9,11 @@ import uz.pdp.myappfigma.dto.product.ProductCreateDto;
 import uz.pdp.myappfigma.dto.product.ProductCriteria;
 import uz.pdp.myappfigma.dto.product.ProductDao;
 import uz.pdp.myappfigma.dto.product.ProductDto;
-import uz.pdp.myappfigma.dto.product.ProductMapper;
+import uz.pdp.myappfigma.generic.ProductMapper;
 import uz.pdp.myappfigma.dto.product.ProductUpdateDto;
 import uz.pdp.myappfigma.entity.Product;
 import uz.pdp.myappfigma.generic.PageDto;
+import uz.pdp.myappfigma.repository.ProductRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,11 +22,13 @@ import java.util.stream.Collectors;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final CategoryService categoryService;
     private final ProductMapper productMapper;
 
-    public ProductService(ProductRepository productRepository, ProductMapper productMapper, EntityManager entityManager, ProductDao productDao) {
+    public ProductService(ProductRepository productRepository, ProductMapper productMapper, EntityManager entityManager, ProductDao productDao, CategoryService categoryService) {
         this.productRepository = productRepository;
         this.productMapper = productMapper;
+        this.categoryService = categoryService;
     }
 
     @Transactional
@@ -42,6 +45,10 @@ public class ProductService {
     }
 
     public Long create(ProductCreateDto dto) {
+        Long id = dto.categoryId();
+        if (!categoryService.findByIdNotNull(id)) {
+            return null;
+        }
         Product product = productMapper.toEntity(dto);
         productRepository.save(product);
         return product.getId();

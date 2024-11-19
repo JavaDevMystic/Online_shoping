@@ -6,7 +6,6 @@ import uz.pdp.myappfigma.entity.Product;
 import uz.pdp.myappfigma.entity.Product_;
 import uz.pdp.myappfigma.utils.QueryUtil;
 
-
 public final class ProductSpecs {
 
     private ProductSpecs() {

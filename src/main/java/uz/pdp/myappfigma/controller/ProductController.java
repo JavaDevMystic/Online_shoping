@@ -1,6 +1,7 @@
 package uz.pdp.myappfigma.controller;
 
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uz.pdp.myappfigma.dto.BaseResponse;
+import uz.pdp.myappfigma.dto.ErrorData;
 import uz.pdp.myappfigma.dto.product.ProductCreateDto;
 import uz.pdp.myappfigma.dto.product.ProductCriteria;
 import uz.pdp.myappfigma.dto.product.ProductDto;
@@ -36,24 +38,34 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+
     public BaseResponse<ProductDto> get(@PathVariable long id) {
         ProductDto dto = productService.get(id);
         return new BaseResponse<>(dto);
     }
 
     @PostMapping("/create")
+    @PreAuthorize("hasRole('ADMIN')")
     public BaseResponse<Long> create(@RequestBody ProductCreateDto dto) {
         Long newId = productService.create(dto);
-        return new BaseResponse<>(newId);
+        if (newId != null) {
+            return new BaseResponse<>(newId);
+        } else {
+            return new BaseResponse<>(new ErrorData("Went wrong",false));
+        }
+
     }
 
     @PutMapping("/update/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public BaseResponse<Long> update(@PathVariable Long id, @RequestBody ProductUpdateDto dto) {
         Long newId = productService.update(id, dto);
         return new BaseResponse<>(newId);
     }
 
     @GetMapping("/skidka")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public BaseResponse<List<ProductDto>> getSkidka() {
         List<ProductDto> allWithDiscount = productService.findAllWithDiscount();
         return new BaseResponse<>(allWithDiscount);

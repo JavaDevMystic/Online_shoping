@@ -1,4 +1,4 @@
-package uz.pdp.myappfigma.service;
+package uz.pdp.myappfigma.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

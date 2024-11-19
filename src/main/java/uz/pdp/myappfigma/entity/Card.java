@@ -2,8 +2,6 @@ package uz.pdp.myappfigma.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,25 +10,27 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import uz.pdp.myappfigma.enums.Gender;
+import uz.pdp.myappfigma.enums.CardName;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "categorys")
-public class Category extends Auditable {
+@Table(name = "cards")
+public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private CardName cardName;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    @Column(nullable = false)
+    private String cardNumber;
 
-    private Long childId;
+    @Column(nullable = false)
+    private String validNumber;
+    private Long balance;
 }

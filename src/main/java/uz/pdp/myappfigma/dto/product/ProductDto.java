@@ -13,7 +13,6 @@ public class ProductDto implements Serializable {
     Double price;
     Integer discount;
     Long categoryId;
-    Long brandId;
     Long createdBy;
     LocalDateTime createdAt;
     LocalDateTime updatedAt;
