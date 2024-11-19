@@ -1,11 +1,11 @@
-package uz.pdp.myappfigma.service;
+package uz.pdp.myappfigma.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import uz.pdp.myappfigma.dto.product.ProductCriteria;
+import uz.pdp.myappfigma.generic.ProductCriteria;
 import uz.pdp.myappfigma.dto.product.ProductSpecs;
 import uz.pdp.myappfigma.entity.Product;
 

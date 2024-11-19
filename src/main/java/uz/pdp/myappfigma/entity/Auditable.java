@@ -5,6 +5,8 @@ import lombok.Getter;
 import org.hibernate.annotations.CurrentTimestamp;
 import org.hibernate.annotations.SourceType;
 import org.hibernate.generator.EventType;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
 
 import java.time.LocalDateTime;
 
@@ -17,4 +19,10 @@ public class Auditable {
 
     @CurrentTimestamp(event = EventType.UPDATE,source = SourceType.VM)
     private LocalDateTime updatedAt;
+
+    @CreatedBy
+    private Long createdBy;
+
+    @LastModifiedBy
+    private Long updatedBy;
 }
