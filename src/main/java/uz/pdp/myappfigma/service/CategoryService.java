@@ -16,12 +16,10 @@ import java.util.List;
 public class CategoryService {
 
 
-    private final CategoryMapper mapper;
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
 
     public CategoryService(CategoryMapper mapper, CategoryRepository categoryRepository, CategoryMapper categoryMapper) {
-        this.mapper = mapper;
         this.categoryRepository = categoryRepository;
         this.categoryMapper = categoryMapper;
     }

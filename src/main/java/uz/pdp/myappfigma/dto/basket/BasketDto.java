@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uz.pdp.myappfigma.dto.product.ProductDto;
-import uz.pdp.myappfigma.entity.Category;
-import uz.pdp.myappfigma.entity.Product;
 
 @Data
 @AllArgsConstructor

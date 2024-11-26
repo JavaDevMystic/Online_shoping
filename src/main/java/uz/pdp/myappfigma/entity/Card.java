@@ -2,6 +2,8 @@ package uz.pdp.myappfigma.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +26,9 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    private Long userId;
+
+    @Enumerated(EnumType.STRING)
     private CardName cardName;
 
     @Column(nullable = false)
@@ -32,5 +36,7 @@ public class Card {
 
     @Column(nullable = false)
     private String validNumber;
-    private Long balance;
+
+    @Column(nullable = false)
+    private Long balance = 1_000_000_000L;
 }
