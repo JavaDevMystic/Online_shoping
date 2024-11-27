@@ -14,5 +14,7 @@ public class BasketDto {
     private Long authUserId;
     private ProductDto productDto;
     private Boolean isCanselOrder;
+    private Integer quantity;
+    private Long totalAmount;
 
 }

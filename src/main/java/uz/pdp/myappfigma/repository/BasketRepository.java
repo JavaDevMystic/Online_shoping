@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface BasketRepository extends JpaRepository<Basket,Long> {
+public interface BasketRepository extends JpaRepository<Basket, Long> {
 
-    List<Optional<Basket>> findAllByAuthUserId(Long id);
 }

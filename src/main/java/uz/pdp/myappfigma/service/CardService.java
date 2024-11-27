@@ -77,6 +77,13 @@ public class CardService {
         cardRepository.save(card);
     }
 
+    public Boolean deleteCard(Long id) {
 
+        if (cardRepository.existsById(id)) {
+            cardRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 
 }

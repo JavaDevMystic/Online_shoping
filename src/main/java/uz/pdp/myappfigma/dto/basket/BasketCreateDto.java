@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 public class BasketCreateDto {
 
     private Long productId;
+
+    private Integer quantity;
 }

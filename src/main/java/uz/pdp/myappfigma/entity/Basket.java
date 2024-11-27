@@ -26,11 +26,18 @@ public class Basket {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "authuser_id",nullable = false)
+    @JoinColumn(name = "authuser_id", nullable = false)
     private AuthUser authUser;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
-    private Boolean isCanselOrder=false;
+
+    private Boolean isCanselOrder = false;
+
+    private Long totalAmount;
+
+    private Integer quantity;
+
+    private Boolean addHistory = false;
 }
