@@ -18,13 +18,11 @@ import java.util.Optional;
 public class CategoryService {
 
 
-    private final CategoryMapper mapper;
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
     private final SessionUser sessionUser;
 
-    public CategoryService(CategoryMapper mapper, CategoryRepository categoryRepository, CategoryMapper categoryMapper, SessionUser sessionUser) {
-        this.mapper = mapper;
+    public CategoryService(CategoryRepository categoryRepository, CategoryMapper categoryMapper, SessionUser sessionUser) {
         this.categoryRepository = categoryRepository;
         this.categoryMapper = categoryMapper;
         this.sessionUser = sessionUser;

@@ -31,7 +31,7 @@ public class BrandController {
         this.brandService = brandService;
     }
 
-    @PostMapping("/creat")
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('ADMIN')")
     public BaseResponse<Long> create(@RequestBody BrandCreateDto dto){

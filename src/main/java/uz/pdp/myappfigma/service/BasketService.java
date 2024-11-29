@@ -40,25 +40,36 @@ public class BasketService {
 
     public Long create(BasketCreateDto dto) {
         Long productId = dto.getProductId();
-        Product product = productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Bro mavjud bo'lmagan productni kiritmoqchi bo'lyabsiz"));
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Bro mavjud bo'lmagan productni kiritmoqchi bo'lyabsiz"));
 
         if (product.getCount() < dto.getQuantity()) {
             throw new IllegalArgumentException("Productni miqdori yetarli emas?");
         }
+
         product.setCount(product.getCount() - dto.getQuantity());
-        ///productni shu payti miqdorini bitaga kamaytirib qo'yish kerak
 
         Basket entity = basketMapper.toEntity(dto);
-        entity.setTotalAmount((long) (dto.getQuantity() * product.getPrice()));
-        Long id = sessionUser.getId();
-        AuthUser authUser = authUserRepository.findById(id).orElseThrow(() -> new RuntimeException("User topilmadi bro" + id));
+
+        Integer discount = product.getDiscount();
+        double discountMultiplier = (discount != null && discount > 0) ? 1 - discount / 100.0 : 1.0;
+        System.out.println(discountMultiplier);
+        long totalAmount = (long) (dto.getQuantity() * product.getPrice() * discountMultiplier);
+        entity.setTotalAmount(totalAmount);
+
+        Long userId = sessionUser.getId();
+        AuthUser authUser = authUserRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User topilmadi bro " + userId));
         entity.setAuthUser(authUser);
         entity.setProduct(product);
-        entity.setIsCanselOrder(true);
-        basketRepository.save(entity);
-        return entity.getId();
 
+        entity.setIsCanselOrder(true);
+
+        basketRepository.save(entity);
+
+        return entity.getId();
     }
+
 
 
     public boolean canselOrder(Long id) {
