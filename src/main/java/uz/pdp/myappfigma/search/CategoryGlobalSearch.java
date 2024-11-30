@@ -18,6 +18,10 @@ public class CategoryGlobalSearch implements GlobalS<Category, CategoryCriteria>
             specs = specs.and(QueryUtil.search(criteria.getQuery(), Category_.name));
         }
 
+        if (criteria.getQuery() != null) {
+            specs = specs.and(QueryUtil.search(criteria.getQuery(), Category_.name));
+        }
+
         return specs;
     }
 }

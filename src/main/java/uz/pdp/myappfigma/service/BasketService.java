@@ -53,7 +53,7 @@ public class BasketService {
 
         Integer discount = product.getDiscount();
         double discountMultiplier = (discount != null && discount > 0) ? 1 - discount / 100.0 : 1.0;
-        System.out.println(discountMultiplier);
+
         long totalAmount = (long) (dto.getQuantity() * product.getPrice() * discountMultiplier);
         entity.setTotalAmount(totalAmount);
 

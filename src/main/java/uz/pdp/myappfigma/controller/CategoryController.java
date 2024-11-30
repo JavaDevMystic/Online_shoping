@@ -88,14 +88,6 @@ public class CategoryController {
         return new BaseResponse<>(delete);
     }
 
-
-
-    @GetMapping("/parentCategory")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public BaseResponse<List<CategoryDto>> getCategoriesByGender(@RequestParam Gender gender) {
-        List<CategoryDto> categories = categoryService.getCategoriesByGender(gender);
-        return new BaseResponse<>(categories);
-    }
     @GetMapping("/childCategory/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public BaseResponse<List<CategoryDto>> parentCategory(@PathVariable Long id){

@@ -107,6 +107,11 @@ public class CategoryService {
         return categories.stream().map(categoryMapper::toDto).toList();
     }
 
+    public List<CategoryDto> getCategoriesAll() {
+        List<Category> list = categoryRepository.findAll();
+        return list.stream().map(categoryMapper::toDto).toList();
+    }
+
     public List<CategoryDto> getChildCategory(Long id) {
         List<Category> category = categoryRepository.findByCategory(id);
 
@@ -114,6 +119,6 @@ public class CategoryService {
                 .stream()
                 .map(category1 -> categoryMapper.toDto(category1))
                 .toList();
-        return list.isEmpty()?Collections.emptyList():list;
+        return list.isEmpty() ? Collections.emptyList() : list;
     }
 }

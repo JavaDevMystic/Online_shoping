@@ -16,6 +16,10 @@ public interface CategoryRepository extends JpaRepository<Category,Long> , JpaSp
     @Query("SELECT c FROM Category c WHERE c.childId = 0 AND c.gender = :gender")
     List<Category> findByGender(@Param("gender") Gender gender);
 
+    @Query("SELECT c FROM Category c WHERE c.childId = 0")
+    List<Category> findAll();
+
+
     @Query("SELECT b FROM Category b where UPPER(b.name)=UPPER(:name)")
     Optional<Category> findByName(@Param("name") String name);
 
